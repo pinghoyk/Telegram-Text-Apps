@@ -248,7 +248,7 @@ def command_rename_menu(user_call, call):
     name = (call.data).split('_')[2]
 
     data = open_data_menu(name)
-    data[rename] = user_call.text
+    data[rename] = (user_call.text).replace('\n','/n')
     path = f'{menu_user_path}/{name}.txt'
     with open(path, 'w', encoding='utf-8') as file:
         for key, value in data.items():
