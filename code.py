@@ -29,7 +29,6 @@ error_path = f'{texts_path}/error_log.txt'
 
 object_menu = {'Текст':'text', 'Кнопки':'buttons', 'Возврат':'back', 'Тип меню':'typemenu', 'Команда':'command'}
 buttons_edit_menu = {key: f'admin_rename-object-{value}_[file-name]' for key, value in object_menu.items()}
-print (buttons_edit_menu)
 
 dev_menu = [
     {"name": "admin", "text": 'Панель администратора', 'buttons': {'Настройка меню': 'admin_settings-menu'}, 'back': 'main'},
@@ -251,8 +250,6 @@ def command_rename_menu(user_call, call):
     data = open_data_menu(name)
     data[rename] = user_call.text
     path = f'{menu_user_path}/{name}.txt'
-    if name in [menu_item['name'] for menu_item in dev_menu]: 
-        path = f'{menu_dev_path}/{name}.txt'
     with open(path, 'w', encoding='utf-8') as file:
         for key, value in data.items():
             file.write(f"{key}: {value}\n")
